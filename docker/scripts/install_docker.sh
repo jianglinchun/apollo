@@ -46,10 +46,19 @@ function install_docker_arm() {
   sudo apt-get install -y docker-ce
 }
 
+function install_docker_mac() {
+  echo 'todo mac'
+}
+
 # the machine type, currently support x86_64, aarch64
 MACHINE_ARCH=$(uname -m)
+MACHINE_OS=$(uname -s)
 if [ "$MACHINE_ARCH" == 'x86_64' ]; then
-  install_docker_x86
+  if [ "$MACHINE_OS" == 'Darwin' ]; then
+    install_docker_mac
+  else
+    install_docker_x86
+  fi
 elif [ "$MACHINE_ARCH" == 'aarch64' ]; then
   install_docker_arm
 else
