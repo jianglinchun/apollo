@@ -14,8 +14,8 @@
  * limitations under the License.
  *****************************************************************************/
 
-#ifndef MODEULES_PERCEPTION_ONBOARD_EVENT_MANAGER_H_
-#define MODEULES_PERCEPTION_ONBOARD_EVENT_MANAGER_H_
+#ifndef MODULES_PERCEPTION_ONBOARD_EVENT_MANAGER_H_
+#define MODULES_PERCEPTION_ONBOARD_EVENT_MANAGER_H_
 
 #include <memory>
 #include <sstream>
@@ -64,9 +64,7 @@ class EventManager {
   bool GetEventMeta(const std::vector<EventID> &event_id,
                     std::vector<std::string> *str_list) const;
 
-  int NumEvents() const {
-    return event_queue_map_.size();
-  }
+  int NumEvents() const { return event_queue_map_.size(); }
 
  private:
   using EventQueue = FixedSizeConQueue<Event>;
@@ -91,4 +89,4 @@ class EventManager {
 }  // namespace perception
 }  // namespace apollo
 
-#endif  // MODEULES_PERCEPTION_ONBOARD_EVENT_MANAGER_H_
+#endif  // MODULES_PERCEPTION_ONBOARD_EVENT_MANAGER_H_

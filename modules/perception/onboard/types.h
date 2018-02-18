@@ -14,8 +14,8 @@
  * limitations under the License.
  *****************************************************************************/
 
-#ifndef MODEULES_PERCEPTION_ONBOARD_TYPES_H_
-#define MODEULES_PERCEPTION_ONBOARD_TYPES_H_
+#ifndef MODULES_PERCEPTION_ONBOARD_TYPES_H_
+#define MODULES_PERCEPTION_ONBOARD_TYPES_H_
 
 #include <sstream>
 #include <string>
@@ -36,9 +36,7 @@ struct Event {
   // TODO(Yangguang Li):
   double local_timestamp = 0.0;  // local timestamp to compute process delay.
 
-  Event() {
-    local_timestamp = TimeUtil::GetCurrentTime();
-  }
+  Event() { local_timestamp = TimeUtil::GetCurrentTime(); }
 
   std::string to_string() const {
     std::ostringstream oss;
@@ -80,4 +78,4 @@ enum IoStreamType {
 }  // namespace perception
 }  // namespace apollo
 
-#endif  // MODEULES_PERCEPTION_ONBOARD_TYPES_H_
+#endif  // MODULES_PERCEPTION_ONBOARD_TYPES_H_

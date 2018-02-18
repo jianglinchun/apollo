@@ -14,8 +14,8 @@
  * limitations under the License.
  *****************************************************************************/
 
-#ifndef MODEULES_PERCEPTION_ONBOARD_DAG_STREAMING_H_
-#define MODEULES_PERCEPTION_ONBOARD_DAG_STREAMING_H_
+#ifndef MODULES_PERCEPTION_ONBOARD_DAG_STREAMING_H_
+#define MODULES_PERCEPTION_ONBOARD_DAG_STREAMING_H_
 
 #include <map>
 #include <memory>
@@ -24,10 +24,11 @@
 
 #include "gflags/gflags.h"
 
+#include "modules/perception/onboard/proto/dag_config.pb.h"
+
 #include "modules/common/macro.h"
 #include "modules/perception/lib/base/thread.h"
 #include "modules/perception/onboard/event_manager.h"
-#include "modules/perception/onboard/proto/dag_config.pb.h"
 #include "modules/perception/onboard/shared_data_manager.h"
 
 namespace apollo {
@@ -49,15 +50,11 @@ class DAGStreaming : public Thread {
 
   void Stop();
 
-  size_t NumSubnodes() const {
-    return subnode_map_.size();
-  }
+  size_t NumSubnodes() const { return subnode_map_.size(); }
 
   void Reset();
 
-  void RemoveStaleData() {
-    shared_data_manager_.RemoveStaleData();
-  }
+  void RemoveStaleData() { shared_data_manager_.RemoveStaleData(); }
 
   size_t CongestionValue() const;
 
@@ -76,7 +73,7 @@ class DAGStreaming : public Thread {
 
   EventManager event_manager_;
   SharedDataManager shared_data_manager_;
-  bool inited_;
+  bool inited_ = false;
   std::unique_ptr<DAGStreamingMonitor> monitor_;
   // NOTE(Yangguang Li): Guarantee Sunode should be firstly called destructor.
   // Subnode depends the EventManager and SharedDataManager.
@@ -94,9 +91,7 @@ class DAGStreamingMonitor : public Thread {
 
   virtual ~DAGStreamingMonitor() {}
 
-  void Stop() {
-    stop_ = true;
-  }
+  void Stop() { stop_ = true; }
 
  protected:
   void Run() override;
@@ -111,4 +106,4 @@ class DAGStreamingMonitor : public Thread {
 }  // namespace perception
 }  // namespace apollo
 
-#endif  // MODEULES_PERCEPTION_ONBOARD_DAG_STREAMING_H_
+#endif  // MODULES_PERCEPTION_ONBOARD_DAG_STREAMING_H_

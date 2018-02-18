@@ -14,8 +14,8 @@
  * limitations under the License.
  *****************************************************************************/
 
-#ifndef MODEULES_PERCEPTION_ONBOARD_SUBNODE_H_
-#define MODEULES_PERCEPTION_ONBOARD_SUBNODE_H_
+#ifndef MODULES_PERCEPTION_ONBOARD_SUBNODE_H_
+#define MODULES_PERCEPTION_ONBOARD_SUBNODE_H_
 
 #include <stdio.h>
 #include <unistd.h>
@@ -66,25 +66,17 @@ class Subnode : public Thread {
                     const std::vector<EventID> &sub_events,
                     const std::vector<EventID> &pub_events);
 
-  void Stop() {
-    stop_ = true;
-  }
+  void Stop() { stop_ = true; }
 
   // @brief Subnode process interface, should be realized in derived class.
   // @return Status.
   virtual apollo::common::Status ProcEvents() = 0;
 
-  SubnodeID id() const {
-    return id_;
-  }
+  SubnodeID id() const { return id_; }
 
-  std::string name() const {
-    return name_;
-  }
+  std::string name() const { return name_; }
 
-  std::string reserve() const {
-    return reserve_;
-  }
+  std::string reserve() const { return reserve_; }
 
   virtual std::string DebugString() const;
 
@@ -174,4 +166,4 @@ class CommonSubnode : public Subnode {
 }  // namespace perception
 }  // namespace apollo
 
-#endif  // MODEULES_PERCEPTION_ONBOARD_SUBNODE_H_
+#endif  // MODULES_PERCEPTION_ONBOARD_SUBNODE_H_

@@ -17,13 +17,8 @@
 #include "modules/perception/onboard/dag_streaming.h"
 
 #include <unistd.h>
-#include <map>
-#include <string>
-#include <utility>
-#include <vector>
 
-#include "gflags/gflags.h"
-#include "google/protobuf/text_format.h"
+#include <utility>
 
 #include "modules/common/log.h"
 #include "modules/common/util/file.h"
@@ -190,9 +185,7 @@ bool DAGStreaming::InitSharedData(
   return shared_data_manager_.Init(data_config);
 }
 
-void DAGStreaming::Run() {
-  Schedule();
-}
+void DAGStreaming::Run() { Schedule(); }
 
 void DAGStreaming::Reset() {
   event_manager_.Reset();
